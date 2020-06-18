@@ -1,0 +1,23 @@
+{
+    "name": "utopia-php/preloader",
+    "description": "Utopia Preloader library is simple and lite library for managing PHP preloading configuration",
+    "type": "library",
+    "keywords": ["php","framework", "upf", "utopia", "preloader", "preload", "preloading"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Eldad Fux",
+            "email": "team@appwrite.io"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"Utopia\\Preloader\\": "src/Preloader"}
+    },
+    "require": {
+        "php": ">=7.1"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "minimum-stability": "dev"
+}
