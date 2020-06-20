@@ -17,11 +17,22 @@ composer require utopia-php/preloader
 ```php
 <?php
 
-require_once '../vendor/autoload.php';
+if (file_exists(__DIR__.'/../vendor/autoload.php')) {
+    require __DIR__.'/../vendor/autoload.php';
+}
 
-use Utopia\Preloader\Preloader;
+use Preloader\Preloader;
 
-
+(new Preloader())
+    ->paths(realpath(__DIR__ . '/../app/config'))
+    ->paths(realpath(__DIR__ . '/../src'))
+    ->ignore(realpath(__DIR__ . '/../vendor/twig/twig'))
+    ->ignore(realpath(__DIR__ . '/../vendor/guzzlehttp/guzzle'))
+    ->ignore(realpath(__DIR__ . '/../vendor/geoip2'))
+    ->ignore(realpath(__DIR__ . '/../vendor/maxmind'))
+    ->ignore(realpath(__DIR__ . '/../vendor/maxmind-db'))
+    ->ignore(realpath(__DIR__ . '/../vendor/piwik'))
+    ->load();
 
 ```
 
