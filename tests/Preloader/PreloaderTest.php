@@ -44,7 +44,7 @@ class PreloaderTest extends TestCase
             ->paths(realpath(__DIR__ . '/../resources'))
             ->load();
         
-        $this->assertEquals($autoloaded + 3, $preloader->getCount());
+        $this->assertEquals($autoloaded + 3 + 4, $preloader->getCount());
         
         \opcache_reset();
 
@@ -53,6 +53,6 @@ class PreloaderTest extends TestCase
             ->ignore(realpath(__DIR__ . '/../resources/nested'))
             ->load();
         
-        $this->assertEquals($autoloaded + 2, $preloader->getCount());
+        $this->assertEquals($autoloaded + 2 + 4, $preloader->getCount());
     }
 }
