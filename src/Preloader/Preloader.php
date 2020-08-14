@@ -65,9 +65,6 @@ class Preloader
     {
         $this->included = get_included_files();
 
-        var_dump($this->included);
-        var_dump('------');
-
         foreach ($this->paths as $path) {
             $this->loadPath(\rtrim($path, '/'));
         }
