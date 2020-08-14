@@ -23,6 +23,8 @@ class PreloaderTest extends TestCase
 
     public function testTest()
     {
+        \opcache_reset();
+
         $preloader = new Preloader();
         
         $preloader
@@ -32,7 +34,9 @@ class PreloaderTest extends TestCase
 
         $autoloaded = $preloader->getCount();
 
-        $this->assertGreaterThan(300, $autoloaded);
+        $this->assertGreaterThan(30, $autoloaded);
+
+        \opcache_reset();
         
         $preloader = new Preloader();
         
@@ -42,6 +46,8 @@ class PreloaderTest extends TestCase
         
         $this->assertEquals($autoloaded + 3, $preloader->getCount());
         
+        \opcache_reset();
+
         $preloader
             ->paths(realpath(__DIR__ . '/../resources'))
             ->ignore(realpath(__DIR__ . '/../resources/nested'))

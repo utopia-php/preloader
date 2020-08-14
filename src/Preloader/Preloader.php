@@ -28,7 +28,8 @@ class Preloader
     {
         $this->paths = $paths;
 
-        $classMap = require __DIR__.'/../../vendor/composer/autoload_classmap.php';
+        $require = __DIR__.'/../../../../composer/autoload_classmap.php';
+        $classMap = (file_exists($require)) ? require $require : [];
 
         $this->paths = \array_merge(
             $this->paths,
@@ -63,6 +64,9 @@ class Preloader
     public function load(): void
     {
         $this->included = get_included_files();
+
+        var_dump($this->included);
+        var_dump('------');
 
         foreach ($this->paths as $path) {
             $this->loadPath(\rtrim($path, '/'));
