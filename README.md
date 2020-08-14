@@ -22,7 +22,7 @@ if (file_exists(__DIR__.'/../vendor/autoload.php')) {
     require __DIR__.'/../vendor/autoload.php';
 }
 
-use Preloader\Preloader;
+use Utopia\Preloader;
 
 (new Preloader())
     ->paths(realpath(__DIR__ . '/../app/config'))
