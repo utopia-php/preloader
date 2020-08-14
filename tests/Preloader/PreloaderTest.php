@@ -32,7 +32,7 @@ class PreloaderTest extends TestCase
 
         $autoloaded = $preloader->getCount();
 
-        $this->assertGreaterThan(500, $autoloaded);
+        $this->assertGreaterThan(300, $autoloaded);
         
         $preloader = new Preloader();
         
