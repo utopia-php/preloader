@@ -1,5 +1,6 @@
 # Utopia Preloader
 
+[![Build Status](https://travis-ci.org/utopia-php/preloader.svg?branch=master)](https://travis-ci.org/utopia-php/preloader)
 [![Discord](https://badgen.net/badge/discord/chat/green)](https://discord.gg/GSeTUeA)
 ![Total Downloads](https://img.shields.io/packagist/dt/utopia-php/preloader.svg)
 
