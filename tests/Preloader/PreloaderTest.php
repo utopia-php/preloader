@@ -11,12 +11,12 @@ error_reporting(E_ALL);
 
 class PreloaderTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         $this->test = null;
     }
