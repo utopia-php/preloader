@@ -49,11 +49,10 @@ class Preloader
 
     public function ignore(string ...$names): self
     {
-        foreach($names as $name) {
-            if(is_readable($name)) {
+        foreach ($names as $name) {
+            if (is_readable($name)) {
                 $this->ignores[] = $name;
-            }
-            else {
+            } else {
                 echo "[Preloader] Failed to ignore path `{$name}`".PHP_EOL;
             }
         }
@@ -116,7 +115,7 @@ class Preloader
             return;
         }
         
-        if(in_array(realpath($path), $this->included)) {
+        if (\in_array(\realpath($path), $this->included)) {
             // echo "[Preloader] Skiped `{$path}`".PHP_EOL;
             return;
         }
@@ -136,11 +135,11 @@ class Preloader
 
     private function shouldIgnore(?string $path): bool
     {
-        if($path === null) {
+        if ($path === null) {
             return true;
         }
 
-        if(!\in_array(\pathinfo($path, PATHINFO_EXTENSION), ['php'])) {
+        if (!\in_array(\pathinfo($path, PATHINFO_EXTENSION), ['php'])) {
             return true;
         }
 
