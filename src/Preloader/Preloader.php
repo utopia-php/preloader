@@ -231,6 +231,7 @@ class Preloader
             return;
         }
 
+        $this->loaded = get_included_files();
         $this->included[] = $path;
         $this->count++;
     }
