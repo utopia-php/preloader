@@ -25,28 +25,30 @@ class PreloaderTest extends TestCase
     {
         $preloader = new Preloader();
         
-        $preloader
-            //->paths(realpath(__DIR__ . '/../resources'))
-            // ->paths(realpath(__DIR__ . '/../resources/nested'))
-            ->load();
-
+        $preloader->load();
+        
         $autoloaded = $preloader->getCount();
 
-        $this->assertGreaterThan(30, $autoloaded);
+        $this->assertEquals(0, $autoloaded);
+        $this->assertCount(0, $preloader->getList());
 
         $preloader = new Preloader();
         
         $preloader
             ->paths(realpath(__DIR__ . '/../resources'))
             ->load();
-        
-        $this->assertEquals($autoloaded + 3 + 4, $preloader->getCount());
-        
+
+        $this->assertEquals(3, $preloader->getCount());
+        $this->assertCount(3, $preloader->getList());
+
+        $preloader = new Preloader();
+
         $preloader
             ->paths(realpath(__DIR__ . '/../resources'))
             ->ignore(realpath(__DIR__ . '/../resources/nested'))
             ->load();
         
-        $this->assertEquals($autoloaded + 2 + 5, $preloader->getCount());
+        $this->assertEquals(2, $preloader->getCount());
+        $this->assertCount(2, $preloader->getList());
     }
 }
