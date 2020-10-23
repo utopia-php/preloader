@@ -35,7 +35,7 @@ class PreloaderTest extends TestCase
         $preloader = new Preloader();
         
         $preloader
-            ->paths(realpath(__DIR__ . '/../resources'))
+            ->paths(realpath(__DIR__ . '/../resources1'))
             ->load();
 
         $this->assertEquals(3, $preloader->getCount());
@@ -44,8 +44,8 @@ class PreloaderTest extends TestCase
         $preloader = new Preloader();
 
         $preloader
-            ->paths(realpath(__DIR__ . '/../resources'))
-            ->ignore(realpath(__DIR__ . '/../resources/nested'))
+            ->paths(realpath(__DIR__ . '/../resources2'))
+            ->ignore(realpath(__DIR__ . '/../resources2/nested'))
             ->load();
         
         $this->assertEquals(2, $preloader->getCount());

@@ -15,9 +15,19 @@ class Preloader
     protected $paths = [];
 
     /**
+     * @var array
+     */
+    protected $loaded = [];
+
+    /**
      * @var int
      */
     protected $count = 0;
+
+    /**
+     * @var bool
+     */
+    protected $debug = true;
 
     /**
      * @var array
@@ -76,7 +86,9 @@ class Preloader
             if (is_readable($name)) {
                 $this->ignores[] = $name;
             } else {
-                echo "[Preloader] Failed to ignore path `{$name}`".PHP_EOL;
+                if($this->debug) {
+                    echo "[Preloader] Failed to ignore path `{$name}`".PHP_EOL;
+                }
             }
         }
 
@@ -90,11 +102,15 @@ class Preloader
      */
     public function load(): void
     {
+        $this->loaded = get_included_files();
+
         foreach ($this->paths as $path) {
             $this->loadPath(\rtrim($path, '/'));
         }
 
-        //echo "[Preloader] Preloaded {$already} files.".PHP_EOL;
+        if($this->debug) {
+            echo "[Preloader] Preloaded {$this->count} files.".PHP_EOL;
+        }
     }
 
     /**
@@ -119,6 +135,19 @@ class Preloader
     public function getList(): array
     {
         return $this->included;
+    }
+
+    /**
+     * Set Debug
+     * 
+     * Set debug mode status.
+     * 
+     * @param bool $status
+     */
+    public function setDebug(bool $status = true): self
+    {
+        $this->debug = $status;
+        return $this;
     }
 
     /**
@@ -179,7 +208,16 @@ class Preloader
         }
         
         if (\in_array(\realpath($path), $this->included)) {
-            echo "[Preloader] Skiped `{$path}`".PHP_EOL;
+            if($this->debug) {
+                echo "[Preloader] Skiped `{$path}`".PHP_EOL;
+            }
+            return;
+        }
+        
+        if (\in_array(\realpath($path), $this->loaded)) {
+            if($this->debug) {
+                echo "[Preloader] Skiped `{$path}`".PHP_EOL;
+            }
             return;
         }
         
@@ -187,7 +225,9 @@ class Preloader
             // opcache_compile_file($path);
             require $path;
         } catch (\Throwable $th) {
-            echo "[Preloader] Failed to load `{$path}`: ".$th->getMessage().PHP_EOL;
+            if($this->debug) {
+                echo "[Preloader] Failed to load `{$path}`: ".$th->getMessage().PHP_EOL;
+            }
             return;
         }
 
