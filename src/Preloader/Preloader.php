@@ -27,7 +27,7 @@ class Preloader
     /**
      * @var bool
      */
-    protected $debug = true;
+    protected $debug = false;
 
     /**
      * @var array
@@ -86,7 +86,7 @@ class Preloader
             if (is_readable($name)) {
                 $this->ignores[] = $name;
             } else {
-                if($this->debug) {
+                if ($this->debug) {
                     echo "[Preloader] Failed to ignore path `{$name}`".PHP_EOL;
                 }
             }
@@ -108,7 +108,7 @@ class Preloader
             $this->loadPath(\rtrim($path, '/'));
         }
 
-        if($this->debug) {
+        if ($this->debug) {
             echo "[Preloader] Preloaded {$this->count} files.".PHP_EOL;
         }
     }
@@ -208,14 +208,14 @@ class Preloader
         }
         
         if (\in_array(\realpath($path), $this->included)) {
-            if($this->debug) {
+            if ($this->debug) {
                 echo "[Preloader] Skiped `{$path}`".PHP_EOL;
             }
             return;
         }
         
         if (\in_array(\realpath($path), $this->loaded)) {
-            if($this->debug) {
+            if ($this->debug) {
                 echo "[Preloader] Skiped `{$path}`".PHP_EOL;
             }
             return;
@@ -225,7 +225,7 @@ class Preloader
             // opcache_compile_file($path);
             require $path;
         } catch (\Throwable $th) {
-            if($this->debug) {
+            if ($this->debug) {
                 echo "[Preloader] Failed to load `{$path}`: ".$th->getMessage().PHP_EOL;
             }
             return;
