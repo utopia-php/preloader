@@ -18,14 +18,6 @@ body:
     validations:
       required: false
   - type: textarea
-    id: steps-to-reproduce
-    validations:
-      required: true
-    attributes:
-      label: "👟 Reproduction steps"
-      description: "How do you trigger this bug? Please walk us through it step by step."
-      placeholder: "When I ..."
-  - type: textarea
     id: what-happened
     attributes:
       label: What happened?
@@ -34,6 +26,14 @@ body:
       value: "A bug happened!"
     validations:
       required: true
+  - type: textarea
+    id: steps-to-reproduce
+    validations:
+      required: true
+    attributes:
+      label: "👟 Reproduction steps"
+      description: "How do you trigger this bug? Please walk us through it step by step."
+      placeholder: "When I ..."
   - type: dropdown
     id: version
     attributes:
