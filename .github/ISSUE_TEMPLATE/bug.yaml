@@ -17,7 +17,7 @@ body:
       placeholder: ex. email@example.com
     validations:
       required: false
-      - type: textarea
+  - type: textarea
     id: steps-to-reproduce
     validations:
       required: true
