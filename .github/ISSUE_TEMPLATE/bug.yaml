@@ -38,10 +38,10 @@ body:
     id: version
     attributes:
       label: Version
-      description: What version of our software are you running?
+      description: What version of PHP are you running?
       options:
-        - 1.0.2 (Default)
-        - 1.0.3 (Edge)
+        - 8.0 
+        - 7.3 
     validations:
       required: true
   - type: dropdown
