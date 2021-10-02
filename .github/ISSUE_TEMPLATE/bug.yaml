@@ -41,7 +41,8 @@ body:
       description: What version of PHP are you running?
       options:
         - 8.0 
-        - 7.3 
+        - 7.4
+        - <7.4
     validations:
       required: true
   - type: dropdown
