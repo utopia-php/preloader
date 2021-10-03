@@ -35,6 +35,20 @@ body:
       description: "How do you trigger this bug? Please walk us through it step by step."
       placeholder: "When I ..."
   - type: dropdown
+    id: utopia-version
+    attributes:
+      label: "🎲 Utopia version"
+      description: "What version of Utopia are you running?"
+      options:
+        - Version 0.18.x
+        - Version 0.17.x
+        - Version 0.16.x
+        - Version 0.15.x
+        - Version 0.14.x
+        - Different version (specify in environment)
+    validations:
+      required: true
+  - type: dropdown
     id: version
     attributes:
       label: PHP Version
