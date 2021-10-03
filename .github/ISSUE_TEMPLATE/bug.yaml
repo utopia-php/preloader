@@ -45,7 +45,7 @@ body:
         - Version 0.16.x
         - Version 0.15.x
         - Version 0.14.x
-        - Different version (specify in environment)
+        - Different version (specify in how to reproduce)
     validations:
       required: true
   - type: dropdown
