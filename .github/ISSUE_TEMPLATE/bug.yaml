@@ -37,7 +37,7 @@ body:
   - type: dropdown
     id: version
     attributes:
-      label: Version
+      label: PHP Version
       description: What version of PHP are you running?
       options:
         - 8.0 
