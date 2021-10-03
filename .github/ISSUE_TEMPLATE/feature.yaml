@@ -23,3 +23,11 @@ body:
       label: "🎤 Pitch"
       description: "Please explain why this feature should be implemented and how it would be used. Add examples, if applicable."
       placeholder: "In my use-case, ..."
+ - type: checkboxes
+    id: read-code-of-conduct
+    attributes:
+      description: "This is our [Code of Conduct](https://github.com/appwrite/appwrite/blob/master/CODE_OF_CONDUCT.md)."
+      label: "🏢 Have you read the Code of Conduct?"
+      options:
+        - label: "I read the Code of Conduct"
+          required: true
