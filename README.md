@@ -4,10 +4,10 @@
 [![Discord](https://badgen.net/badge/discord/chat/green)](https://appwrite.io/discord)
 ![Total Downloads](https://img.shields.io/packagist/dt/utopia-php/preloader.svg)
 
-Utopia Preloader library is simple and lite library for managing PHP preloading configuration. This library is aiming to be as simple and easy to learn and use. This library is maintained by the [Appwrite team](https://appwrite.io).
+Utopia Preloader library is a simple and lite library for managing PHP preloading configuration. This library is aiming to be as simple as possible and easy to learn and use. This library is maintained by the [Appwrite team](https://appwrite.io).
 
 
-Although this library is part of the [Utopia Framework](https://github.com/utopia-php/framework) project it is dependency free and can be used as standalone with any other PHP project or framework.
+Although this library is a part of the [Utopia Framework](https://github.com/utopia-php/framework) project it is dependency free and can be used as standalone with any other PHP project or framework.
 
 ## Getting Started
 
