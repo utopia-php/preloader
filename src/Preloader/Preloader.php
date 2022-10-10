@@ -5,17 +5,17 @@ namespace Utopia\Preloader;
 class Preloader
 {
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $ignores = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $paths = [];
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $loaded = [];
 
@@ -30,7 +30,7 @@ class Preloader
     protected $debug = false;
 
     /**
-     * @var array
+     * @var array<string, mixed>
      */
     protected $included = [];
 

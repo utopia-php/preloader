@@ -2,6 +2,7 @@
 
 namespace Utopia\Tests;
 
+use Exception;
 use PHPUnit\Framework\TestCase;
 use Utopia\Preloader\Preloader;
 
@@ -18,19 +19,22 @@ class PreloaderTest extends TestCase
 
     public function tearDown(): void
     {
-        $this->test = null;
+       
     }
 
-    public function testTest()
-    {
+    public function testTest(): void
+    {   
+        $test = new Test('unit-test');
+
+        $test
         $preloader = new Preloader();
         
         $preloader->load();
         
         $autoloaded = $preloader->getCount();
 
-        $this->assertEquals(0, $autoloaded);
-        $this->assertCount(0, $preloader->getList());
+        assertEquals(0, $autoloaded);
+        assertCount(0, $preloader->getList());
 
         $preloader = new Preloader();
         
@@ -38,8 +42,8 @@ class PreloaderTest extends TestCase
             ->paths(realpath(__DIR__ . '/../resources1'))
             ->load();
 
-        $this->assertEquals(3, $preloader->getCount());
-        $this->assertCount(3, $preloader->getList());
+        assertEquals(3, $preloader->getCount());
+        assertCount(3, $preloader->getList());
 
         $preloader = new Preloader();
 
@@ -48,7 +52,7 @@ class PreloaderTest extends TestCase
             ->ignore(realpath(__DIR__ . '/../resources2/nested'))
             ->load();
         
-        $this->assertEquals(2, $preloader->getCount());
-        $this->assertCount(2, $preloader->getList());
+        assertEquals(2, $preloader->getCount());
+        assertCount(2, $preloader->getList());
     }
 }
