@@ -5,17 +5,17 @@ namespace Utopia\Preloader;
 class Preloader
 {
     /**
-     * @var array<string, mixed>
+     * @var array<string>
      */
     protected $ignores = [];
 
     /**
-     * @var array<string, mixed>
+     * @var array<int|string, string>
      */
     protected $paths = [];
 
     /**
-     * @var array<string, mixed>
+     * @var array<int, string>
      */
     protected $loaded = [];
 
@@ -30,7 +30,7 @@ class Preloader
     protected $debug = false;
 
     /**
-     * @var array<string, mixed>
+     * @var array<int|string, mixed>
      */
     protected $included = [];
 
@@ -130,7 +130,7 @@ class Preloader
      * 
      * Get a list of all included paths.
      * 
-     * @return array
+     * @return array<int|string, mixed>
      */
     public function getList(): array
     {
@@ -181,8 +181,8 @@ class Preloader
     private function loadDir(string $path): void
     {
         $handle = \opendir($path);
-
-        while ($file = \readdir($handle)) {
+        if($handle){
+        while (($file = \readdir($handle)) !== false) {
             if (\in_array($file, ['.', '..'])) {
                 continue;
             }
@@ -191,6 +191,8 @@ class Preloader
         }
 
         \closedir($handle);
+        
+        }
     }
 
     /**
