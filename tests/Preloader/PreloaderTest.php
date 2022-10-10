@@ -26,7 +26,7 @@ class PreloaderTest extends TestCase
     {   
         $test = new Test('unit-test');
 
-        $test
+        $test;
         $preloader = new Preloader();
         
         $preloader->load();
