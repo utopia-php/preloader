@@ -13,7 +13,6 @@ class PreloaderTest extends TestCase
 {
     public function setUp(): void
     {
-        
     }
 
     public function tearDown(): void
@@ -24,18 +23,18 @@ class PreloaderTest extends TestCase
     public function testTest()
     {
         $preloader = new Preloader();
-        
+
         $preloader->load();
-        
+
         $autoloaded = $preloader->getCount();
 
         $this->assertEquals(0, $autoloaded);
         $this->assertCount(0, $preloader->getList());
 
         $preloader = new Preloader();
-        
+
         $preloader
-            ->paths(realpath(__DIR__ . '/../resources1'))
+            ->paths(realpath(__DIR__.'/../resources1'))
             ->load();
 
         $this->assertEquals(3, $preloader->getCount());
@@ -44,10 +43,10 @@ class PreloaderTest extends TestCase
         $preloader = new Preloader();
 
         $preloader
-            ->paths(realpath(__DIR__ . '/../resources2'))
-            ->ignore(realpath(__DIR__ . '/../resources2/nested'))
+            ->paths(realpath(__DIR__.'/../resources2'))
+            ->ignore(realpath(__DIR__.'/../resources2/nested'))
             ->load();
-        
+
         $this->assertEquals(2, $preloader->getCount());
         $this->assertCount(2, $preloader->getList());
     }
