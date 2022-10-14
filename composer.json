@@ -4,12 +4,6 @@
     "type": "library",
     "keywords": ["php","framework", "upf", "utopia", "preloader", "preload", "preloading"],
     "license": "MIT",
-    "authors": [
-        {
-            "name": "Eldad Fux",
-            "email": "team@appwrite.io"
-        }
-    ],
     "autoload": {
         "psr-4": {"Utopia\\Preloader\\": "src/Preloader"}
     },
