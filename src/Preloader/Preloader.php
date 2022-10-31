@@ -36,8 +36,8 @@ class Preloader
 
     /**
      * Constructor
-     * 
-     * @param string $paths
+     *
+     * @param  string  $paths
      */
     public function __construct(string ...$paths)
     {
@@ -51,14 +51,13 @@ class Preloader
             \array_values($classMap)
         );
     }
-    
+
     /**
      * Paths
-     * 
+     *
      * Path to load
-     * 
-     * @param string $paths
-     * 
+     *
+     * @param  string  $paths
      * @return $this
      */
     public function paths(string ...$paths): self
@@ -73,11 +72,10 @@ class Preloader
 
     /**
      * Ignore
-     * 
+     *
      * Ignore a given path or file
-     * 
-     * @param string $names
-     * 
+     *
+     * @param  string  $names
      * @return $this
      */
     public function ignore(string ...$names): self
@@ -97,7 +95,7 @@ class Preloader
 
     /**
      * Load
-     * 
+     *
      * Loads all preloader preconfigured paths and files
      */
     public function load(): void
@@ -115,9 +113,9 @@ class Preloader
 
     /**
      * Get Count
-     * 
+     *
      * Get the total number of loaded files.
-     * 
+     *
      * @return int
      */
     public function getCount(): int
@@ -127,10 +125,12 @@ class Preloader
 
     /**
      * Get List
-     * 
+     *
      * Get a list of all included paths.
+
      * 
      * @return array<int|string, mixed>
+
      */
     public function getList(): array
     {
@@ -139,23 +139,24 @@ class Preloader
 
     /**
      * Set Debug
-     * 
+     *
      * Set debug mode status.
-     * 
-     * @param bool $status
+     *
+     * @param  bool  $status
      */
     public function setDebug(bool $status = true): self
     {
         $this->debug = $status;
+
         return $this;
     }
 
     /**
      * Load Path
-     * 
+     *
      * Load a specific file or folder and nested folders.
-     * 
-     * @param string $path
+     *
+     * @param  string  $path
      * @return void
      */
     private function loadPath(string $path): void
@@ -169,13 +170,12 @@ class Preloader
         $this->loadFile($path);
     }
 
-
     /**
      * Load Directory
-     * 
+     *
      * Load a specific folder and nested folders.
-     * 
-     * @param string $path
+     *
+     * @param  string  $path
      * @return void
      */
     private function loadDir(string $path): void
@@ -197,10 +197,10 @@ class Preloader
 
     /**
      * Load File
-     * 
+     *
      * Load a specific file.
-     * 
-     * @param string $path
+     *
+     * @param  string  $path
      * @return void
      */
     private function loadFile(string $path): void
@@ -208,21 +208,23 @@ class Preloader
         if ($this->shouldIgnore($path)) {
             return;
         }
-        
+
         if (\in_array(\realpath($path), $this->included)) {
             if ($this->debug) {
                 echo "[Preloader] Skiped `{$path}`".PHP_EOL;
             }
+
             return;
         }
-        
+
         if (\in_array(\realpath($path), $this->loaded)) {
             if ($this->debug) {
                 echo "[Preloader] Skiped `{$path}`".PHP_EOL;
             }
+
             return;
         }
-        
+
         try {
             // opcache_compile_file($path);
             require $path;
@@ -230,6 +232,7 @@ class Preloader
             if ($this->debug) {
                 echo "[Preloader] Failed to load `{$path}`: ".$th->getMessage().PHP_EOL;
             }
+
             return;
         }
 
@@ -240,10 +243,10 @@ class Preloader
 
     /**
      * Should Ignore
-     * 
+     *
      * Should a given path be ignored or not?
-     * 
-     * @param string $path
+     *
+     * @param  string  $path
      * @return bool
      */
     private function shouldIgnore(?string $path): bool
@@ -252,7 +255,7 @@ class Preloader
             return true;
         }
 
-        if (!\in_array(\pathinfo($path, PATHINFO_EXTENSION), ['php'])) {
+        if (! \in_array(\pathinfo($path, PATHINFO_EXTENSION), ['php'])) {
             return true;
         }
 
