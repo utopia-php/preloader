@@ -5,17 +5,17 @@ namespace Utopia\Preloader;
 class Preloader
 {
     /**
-     * @var array
+     * @var array<string>
      */
     protected $ignores = [];
 
     /**
-     * @var array
+     * @var array<int|string, string>
      */
     protected $paths = [];
 
     /**
-     * @var array
+     * @var array<int, string>
      */
     protected $loaded = [];
 
@@ -30,7 +30,7 @@ class Preloader
     protected $debug = false;
 
     /**
-     * @var array
+     * @var array<int|string, mixed>
      */
     protected $included = [];
 
@@ -127,8 +127,9 @@ class Preloader
      * Get List
      *
      * Get a list of all included paths.
+
      *
-     * @return array
+     * @return array<int|string, mixed>
      */
     public function getList(): array
     {
@@ -179,16 +180,17 @@ class Preloader
     private function loadDir(string $path): void
     {
         $handle = \opendir($path);
+        if ($handle) {
+            while (($file = \readdir($handle)) !== false) {
+                if (\in_array($file, ['.', '..'])) {
+                    continue;
+                }
 
-        while ($file = \readdir($handle)) {
-            if (\in_array($file, ['.', '..'])) {
-                continue;
+                $this->loadPath("{$path}/{$file}");
             }
 
-            $this->loadPath("{$path}/{$file}");
+            \closedir($handle);
         }
-
-        \closedir($handle);
     }
 
     /**
