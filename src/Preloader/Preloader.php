@@ -75,7 +75,7 @@ class Preloader
      *
      * Ignore a given path or file
      *
-     * @param  string $names
+     * @param  string  $names
      * @return $this
      */
     public function ignore(string ...$names): self
@@ -128,9 +128,8 @@ class Preloader
      *
      * Get a list of all included paths.
 
-     * 
+     *
      * @return array<int|string, mixed>
-
      */
     public function getList(): array
     {
@@ -181,17 +180,16 @@ class Preloader
     private function loadDir(string $path): void
     {
         $handle = \opendir($path);
-        if($handle){
-        while (($file = \readdir($handle)) !== false) {
-            if (\in_array($file, ['.', '..'])) {
-                continue;
+        if ($handle) {
+            while (($file = \readdir($handle)) !== false) {
+                if (\in_array($file, ['.', '..'])) {
+                    continue;
+                }
+
+                $this->loadPath("{$path}/{$file}");
             }
 
-            $this->loadPath("{$path}/{$file}");
-        }
-
-        \closedir($handle);
-        
+            \closedir($handle);
         }
     }
 
