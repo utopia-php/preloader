@@ -75,7 +75,7 @@ class Preloader
      *
      * Ignore a given path or file
      *
-     * @param  string  $names
+     * @param  string $names
      * @return $this
      */
     public function ignore(string ...$names): self

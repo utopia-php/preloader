@@ -46,10 +46,11 @@ class PreloaderTest extends TestCase
 
         $preloader = new Preloader();
         
+        $path = realpath(__DIR__.'/../resources2') ?: '';
+        $ignore = realpath(__DIR__.'/../resources2/nested') ?: '';
         $preloader
-
-            ->paths(realpath(__DIR__.'/../resources2'))
-            ->ignore(realpath(__DIR__.'/../resources2/nested'))
+            ->paths($path)
+            ->ignore($ignore)
             ->load();
 
         $this->assertEquals(2, $preloader->getCount());
